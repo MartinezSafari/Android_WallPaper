@@ -7,32 +7,25 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 
+import org.thereachtrust.wallpaper.R;
 import org.thereachtrust.wallpaper.databinding.FragmentPhotoBinding;
 
 public class PhotoFragment extends Fragment {
 
-    private FragmentPhotoBinding binding;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        PhotoViewModel photoViewModel =
-                new ViewModelProvider(this).get(PhotoViewModel.class);
-
-        binding = FragmentPhotoBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textPhoto;
-        photoViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_photo, container, false);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
     }
 }

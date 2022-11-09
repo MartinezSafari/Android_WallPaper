@@ -7,31 +7,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.thereachtrust.wallpaper.R;
 import org.thereachtrust.wallpaper.databinding.FragmentCollectionsBinding;
 
 public class CollectionsFragment extends Fragment {
 
-    private FragmentCollectionsBinding binding;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        CollectionsViewModel collectionsViewModel =
-                new ViewModelProvider(this).get(CollectionsViewModel.class);
-
-        binding = FragmentCollectionsBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textGallery;
-        collectionsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_collections, container, false);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
     }
 }
