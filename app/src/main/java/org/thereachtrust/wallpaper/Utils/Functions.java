@@ -8,8 +8,8 @@ import org.thereachtrust.wallpaper.R;
 public class Functions {
     public static void changeMainFragment(FragmentActivity fragmentActivity, Fragment fragment){
         fragmentActivity.getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_container, fragment)
+               .beginTransaction()
+               .replace(R.id.main_container, fragment)
                 .commit();
 
     }

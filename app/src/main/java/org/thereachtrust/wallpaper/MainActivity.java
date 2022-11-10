@@ -36,21 +36,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-
+        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_photo, R.id.nav_collections, R.id.nav_favorite)
+                R.id.nav_collections, R.id.nav_photo, R.id.nav_favorite)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.main_container);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        //PhotoFragment photoFragment= new PhotoFragment();
-        //Functions.changeMainFragment(MainActivity.this, photoFragment);
     }
 
     @Override
@@ -66,33 +69,21 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //Handle action bar item click
-        int id= item.getItemId();
-        if (id==R.id.action_settings){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onNavigationItemSelected(MenuItem item){
-        //Handle the navigation view of items
-
-        int id= item.getItemId();
-        if (id==R.id.nav_photo){
-            //Handle the photo action
+    /*
+    //@SuppressWarnings("StatementWithEmptyBody")
+    //@Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+        //Handle navigation view item click
+        int id = item.getItemId();
+        if(id==R.id.nav_photo){
             PhotoFragment photoFragment= new PhotoFragment();
             Functions.changeMainFragment(MainActivity.this, photoFragment);
         }
         else if(id==R.id.nav_collections){
-            //Handle the collections action
             CollectionsFragment collectionsFragment= new CollectionsFragment();
             Functions.changeMainFragment(MainActivity.this, collectionsFragment);
         }
         else if(id==R.id.nav_favorite){
-            //Handle the favorite action
             FavoriteFragment favoriteFragment= new FavoriteFragment();
             Functions.changeMainFragment(MainActivity.this, favoriteFragment);
         }
@@ -100,4 +91,6 @@ public class MainActivity extends AppCompatActivity {
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+*/
+
 }
