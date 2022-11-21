@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.thereachtrust.wallpaper.Utils.Constants;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -27,7 +29,7 @@ public class SeviceGeneretor {
                 @Override
                 public Response intercept(@NonNull Chain chain) throws IOException {
                     Request request= chain.request().newBuilder()
-                            .addHeader("Authorization", "Client-ID" + "Your application ID")
+                            .addHeader("Authorization", "Client-ID" + Constants.APPLICATION_ID)
                             .build();
                     return chain.proceed(request);
                 }
@@ -38,7 +40,7 @@ public class SeviceGeneretor {
         if (retrofit == null){
             retrofit= new Retrofit.Builder()
                     .client(okHttpClient)
-                    .baseUrl("Base URL")
+                    .baseUrl(Constants.BASE_API_URL)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
         }
